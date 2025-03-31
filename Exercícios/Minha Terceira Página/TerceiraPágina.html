@@ -1,0 +1,102 @@
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+<title>Formulario...</title>
+</head>
+<body>
+<h1>Formulário de Contato</h1>
+<p>Por favor, preencha o Formulario abaixo e clique no Botão de
+Enviar Mensagem. <br> Agradecemos por seu Contato </p>
+
+<fieldset>
+<legend>Dados Básicos</legend>
+
+<form action="/processa" method="post">
+Nome: <input type="text" name="nome" id=""><br>
+
+<label for="email">E-mail:</label>
+<input type="email" name="email" id="email" 
+    required placeholder="seunome@dominio.com.br"><br>
+
+Website: <input type="text" value="http://" name="nome" id=""><br>
+
+</form>
+</fieldset>
+
+<fieldset>
+<legend>Selecione seu curso</legend>
+
+<input type="radio" name="curso" value="es" id="es">
+<label for="es">Ciência da Computação</label><br>
+<input type="radio" name="curso" value="ec" id="ec">
+<label for="ec">Ciência da Computação</label><br>
+<input type="radio" name="curso" value="cc" id="cc">
+<label for="cc">Ciência da Computação</label><br>
+</fieldset>
+
+<fieldset>
+<legend>Analise as linguagens já usadas por voce</legend>
+<label for="java">Java</label>
+<input type="checkbox" name="ling" id="java" value="java">
+
+<label for="c">C</label>
+<input type="checkbox" name="ling" id="c" value="c">
+
+<label for="c">C++</label>
+<input type="checkbox" name="ling" id="c++" value="c++">
+
+<label for="Perl">Perl</label>
+<input type="checkbox" name="ling" id="perl" value="perl">
+
+<label for="Python">Python</label>
+<input type="checkbox" name="ling" id="Python" value="Python">
+
+<label for="JavaScript">JavaScript</label>
+<input type="checkbox" name="ling" id="JavaScript" value="JavaScript">
+</fieldset>
+
+<fieldset>
+<legend>Dados Complementares</legend>
+
+<label for="cor">Cor Favorita</label>
+<input type="color" name="cor" id="cor">
+<br>
+<label for="nascimento">Data de nascimento</label>
+<input type="date" name="nascimento" id="nascimento">
+<br>
+<label for="ano">Ano de Entrada em Curso do Icomp</label>
+<input type="number" name="ano" id="ano" min="1980" max="2020" step="1" value="2000">
+<br>
+<label for="nota">Nota para este site</label>
+<input type="range" name="nota" id="nota" min="0" max="10" value="0">
+</fieldset>
+
+<fieldset>
+<legend>Areá de atuação</legend>
+<select name="area" id="area">
+<option value="1">Banco de dados</option>
+<option value="2">Marchinne Learning</option>
+<option value="3">Otimização</option>
+</select>
+</fieldset>
+
+<fieldset>
+<legend>Subemta seu curriculo Vitae</legend>
+<input type="file" name="curriculo">
+</fieldset>
+
+<fieldset>
+<legend>Digite sua Mensagem</legend>
+<textarea name="Mensagem" rows="4" cols="76" id="">
+Este é o valor padrão!
+</textarea>
+</fieldset>
+
+<br>
+<button type="reset">Resetar Dados</button>
+<button type="submit">Enviar Mensagem</button>
+</form>
+</body>
+</html>
