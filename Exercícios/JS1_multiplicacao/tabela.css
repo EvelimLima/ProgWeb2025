@@ -1,0 +1,14 @@
+div{
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+} 
+
+table{
+    margin: 10px;
+    border: 2px solid black;
+}
+
+th, td{
+    border: 2px solid black;
+}
