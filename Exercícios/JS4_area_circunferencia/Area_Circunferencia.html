@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Area_Circunferencia.css">
+  <title>Cálculo de Círculo</title>
+</head>
+<body>
+
+<script src="Area_Circunferencia.js"></script>
+
+  <div class="container">
+    <h2>Informe o raio</h2>
+    <form name="myForm" onsubmit="calcular(event)">
+      <input name="myInput" type="text" placeholder="Digite o raio" />
+      <button type="submit">OK</button>
+    </form>
+
+    <table>
+      <tr>
+        <td>Área do círculo:</td>
+        <td><input type="text" id="area" readonly></td>
+      </tr>
+      <tr>
+        <td>Circunferência:</td>
+        <td><input type="text" id="circunferencia" readonly></td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

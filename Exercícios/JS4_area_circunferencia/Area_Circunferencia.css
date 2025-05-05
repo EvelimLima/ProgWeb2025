@@ -1,0 +1,25 @@
+body { 
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    display: flex;
+    justify-self: center; 
+
+}
+
+input, button {
+    margin-top: 10px;
+}
+
+table { 
+    margin-top: 15px; 
+    border-collapse: collapse; 
+}
+
+td { 
+    padding: 5px; 
+}
+.container { 
+    border: 1px solid #ccc; 
+    padding: 20px; 
+    width: 300px; 
+}
