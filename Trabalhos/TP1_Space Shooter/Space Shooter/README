@@ -1,0 +1,35 @@
+TPL_Space Shooter\space-shooter/
+├── assets/
+│   ├── png/                  # Imagens do jogo (inimigos, nave, fundo, etc.)
+│   ├── previewjpg/           # prévias das imagens
+│   ├── readmetxt/            # Arquivo de texto com informações
+│   ├── spaceArt.ai/.svg/.swf/.zip  # Arquivos de arte em diferentes formatos
+│   ├── css/
+│   │   └── styles.css        # Estilos do jogo
+│   └── js/
+│       ├── config.js         # Configurações do jogo
+│       ├── enemyShip.js      # Lógica dos inimigos
+│       ├── game.js           # Lógica principal do jogo
+│       ├── ship.js           # Lógica da nave do jogador
+│       └── space.js          # cenário do jogo
+└── index.html              # Página principal do jogo
+
+
+Regras Feitas:
+1
+2
+
+4
+5
+6
+7
+
+Parcialmente Feitas:
+3 - nave não deve sair da tela
+
+Fazando:
+8
+
+A fazer:
+9
+10
