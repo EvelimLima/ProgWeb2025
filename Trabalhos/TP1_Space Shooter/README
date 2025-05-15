@@ -11,7 +11,7 @@ TPL_Space Shooter\space-shooter/
 │       ├── enemyShip.js      # Lógica dos inimigos
 │       ├── game.js           # Lógica principal do jogo
 │       ├── ship.js           # Lógica da nave do jogador
-│       └── space.js          # Possivelmente o cenário ou fundo do jogo
+│       └── space.js          # cenário do jogo
 └── index.html              # Página principal do jogo
 
 
