@@ -27,7 +27,7 @@ Regras Feitas:
 Parcialmente Feitas:
 3 - nave não deve sair da tela
 
-Fazando:
+Fazendo:
 8
 
 A fazer:
