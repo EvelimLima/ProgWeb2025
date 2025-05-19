@@ -39,7 +39,7 @@ function updateScore(points) { // regra 1 ok.
     scoreDisplay.textContent = String(score).padStart(6, "0"); 
 }
 
-function checkColisoes() {
+function checkColisoes() { // regra 7
     tiros.forEach((tiro, i) => {
         const tiroRect = tiro.getRect()
 
@@ -72,6 +72,44 @@ function isColliding(rect1, rect2) {
         rect1.left > rect2.right ||
         rect1.right < rect2.left
     );
+}
+
+function detectarColisaoNave() {
+    const shitReact = shit.element.getBoundingClientRect()
+
+    const checkGroup = (grou) => {
+        for (let i =0; i < group.length; i++){
+            const enemyRect = group[i].element.getBoundingClientRect()
+            if (isColliding(shitReact, enemyRect)) {
+                group[i].element.remove()
+                group.splice(i, 1)
+                danosNave()
+                break
+            }
+        }
+    }
+
+}
+
+let danos = false
+
+function danosNave(){
+    if (danos) return
+
+    lives--
+
+    updateScore()
+    danos = true
+    ship.element.src = "assets/png/playerDamaged.png"
+
+    setTimeout(() => {
+        ship.element.src = ship.getCurentSprit()
+        danos = false
+    }, 5000 )
+
+    if (lives <= 0) {
+        endGame()        //  <----------olhaa
+    }
 }
 
 
