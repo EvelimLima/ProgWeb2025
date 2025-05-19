@@ -75,12 +75,12 @@ function isColliding(rect1, rect2) {
 }
 
 function detectarColisaoNave() {
-    const shitReact = shit.element.getBoundingClientRect()
+    const shipReact = ship.element.getBoundingClientRect()
 
-    const checkGroup = (grou) => {
-        for (let i =0; i < group.length; i++){
+    const checkGroup = (group) => {
+        for (let i = 0; i < group.length; i++){
             const enemyRect = group[i].element.getBoundingClientRect()
-            if (isColliding(shitReact, enemyRect)) {
+            if (isColliding(shipReact, enemyRect)) {
                 group[i].element.remove()
                 group.splice(i, 1)
                 danosNave()
@@ -89,6 +89,10 @@ function detectarColisaoNave() {
         }
     }
 
+    checkGroup(enemyShips)
+    checkGroup(bigAsteroids)
+    checkGroup(smallAsteroids)
+    checkGroup(flyingSaucers)
 }
 
 let danos = false
@@ -98,7 +102,7 @@ function danosNave(){
 
     lives--
 
-    updateScore()
+    updateLives()
     danos = true
     ship.element.src = "assets/png/playerDamaged.png"
 
@@ -108,8 +112,36 @@ function danosNave(){
     }, 5000 )
 
     if (lives <= 0) {
-        endGame()        //  <----------olhaa
+        endGame()        //  <----------olha regra 9
     }
+}
+
+function updateLives(){
+    const livesElement =  document.getElementById("lives")
+
+    livesElement.innerHTML = ' '
+    for (let i = 0; i < lives; i++) {
+        const lifeIcon = document.createElement('div')
+        lifeIcon.className = 'life-icon'
+        livesElement.appendChild(lifeIcon)
+    }
+}
+
+function endGame() {
+    isRunning = false
+    isPaused = true
+
+    const gameOverElement = document.getElementById("game-over")
+    gameOverElement.style.display = "block"
+    gameOverElement.innerHTML = `Game Over!<br>Score: ${score}`
+
+    setTimeout(() => {
+        const restartElement = document.getElementById("restart-button")
+  ////
+        restartElement.addEventListener("click", () => {
+            location.reload()
+        })
+    })
 }
 
 
@@ -164,6 +196,8 @@ function run() {
     });
 
     checkColisoes();
+    detectarColisaoNave();
+
 }
 
 // Inicialização
@@ -171,6 +205,7 @@ function init() {
     initHud();
     setInterval(run, 1000 / FPS);
     setInterval(maiorDificuldade, 60000); // Aumenta a dificuldade a cada 60 segundo
+
 }
 
 init();
