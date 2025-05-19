@@ -19,16 +19,14 @@ class Ship {
     this.element.style.left = `${(TAMX / 2) - 50}px`
     space.element.appendChild(this.element)
   }
-
-
   
   changeDirection(giro) { // -1 +1
     if (this.direction + giro >= 0 && this.direction + giro <= 2)
       this.direction = this.direction + giro
     this.element.src = directions[this.direction]
   }
+
   move() {
-  
   const currentLeft = parseInt(this.element.style.left);
   const shipWidth = this.element.offsetWidth; // Largura da nave
 
@@ -39,6 +37,15 @@ class Ship {
     this.element.style.left = `${currentLeft + 1}px`;
   }
 }
+
+getCurentSprit() {
+    const directions = [
+        "assets/png/playerLeft.png",
+        "assets/png/player.png",
+        "assets/png/playerRight.png",
+    ]
+    return directions[this.direction]
+  }
 }
 
 export const ship = new Ship()
