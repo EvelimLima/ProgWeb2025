@@ -24,6 +24,8 @@ Regras Feitas:
 5 - velocidades dos obstáculos devem ser aleatórias
 6 - Aumentar a velocidade dos obstáculos a cada minuto.
 7 - Tiro com barra de espaço. Cada obstáculo dá uma pontuação diferente 
+8 - ao colidir com obstáculo perde 1 vida, mostras danos por 5 segundos
+9 - Ao perder 3 vidas: Game over com botão de restart
 
 
 Parcialmente Feitas:
@@ -31,9 +33,7 @@ Parcialmente Feitas:
 
 
 Fazendo:
-8 - ao colidir com obstáculo perde 1 vida, mostras danos por 5 segundos
 
+10 - Remover os obstáculos destruídos ou que saírem da tela
 
 A fazer:
-9 - Ao perder 4 vidas: Game over com botão de restart
-10 - Remova os obstáculos destruídos ou que saírem da tela

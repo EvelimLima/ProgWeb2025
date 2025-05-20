@@ -36,15 +36,23 @@ class Ship {
   if (this.direction === 2 && currentLeft < TAMX - shipWidth) { // corrigir 
     this.element.style.left = `${currentLeft + 1}px`;
   }
-}
+ }
 
-getCurentSprit() {
-    const directions = [
-        "assets/png/playerLeft.png",
-        "assets/png/player.png",
-        "assets/png/playerRight.png",
+  getCurentSprit() {
+  const directions = [
+      "assets/png/playerLeft.png",
+      "assets/png/player.png",
+      "assets/png/playerRight.png",
     ]
     return directions[this.direction]
+  }
+
+  resetReposition() {
+    this.direction = 1
+    this.element.src = this.getCurentSprit()
+    const shipWidth = this.element.offsetWidth
+    this.element.style.left = `${(TAMX / 2) - 50}px`
+    this.element.style.bottom = "20px"
   }
 }
 

@@ -112,7 +112,7 @@ function danosNave(){
     }, 5000 )
 
     if (lives <= 0) {
-        endGame()        //  <----------olha regra 9
+        endGame()     
     }
 }
 
@@ -127,21 +127,40 @@ function updateLives(){
     }
 }
 
-function endGame() {
-    isRunning = false
-    isPaused = true
+function endGame() { // regra 9
+    isRunning = false;
+    document.getElementById("game-over").classList.remove("hidden");
+    document.getElementById("final-score").textContent = `Score: ${score}`;
+}
 
-    const gameOverElement = document.getElementById("game-over")
-    gameOverElement.style.display = "block"
-    gameOverElement.innerHTML = `Game Over!<br>Score: ${score}`
+function resetGame() {
+        score = 0;
+        lives = 3;
+        updateScore(0);
+        updateLives();
 
-    setTimeout(() => {
-        const restartElement = document.getElementById("restart-button")
-  ////
-        restartElement.addEventListener("click", () => {
-            location.reload()
-        })
-    })
+        const elementsToRemove = [
+            ...enemyShips,
+            ...bigAsteroids,
+            ...smallAsteroids,
+            ...flyingSaucers,
+        ]
+
+        elementsToRemove.forEach(e => e.element.remove())
+        enemyShips.length = 0;
+        bigAsteroids.length = 0;
+        smallAsteroids.length = 0;
+        flyingSaucers.length = 0;
+
+        tiros.forEach(tiro => tiro.destroi());
+        tiros.length = 0;
+
+        ship.element.src = ship.getCurentSprit()
+        ship.resetReposition()
+
+        document.getElementById("game-over").classList.add("hidden");
+        
+        isRunning = true;
 }
 
 
@@ -204,8 +223,9 @@ function run() {
 function init() {
     initHud();
     setInterval(run, 1000 / FPS);
-    setInterval(maiorDificuldade, 60000); // Aumenta a dificuldade a cada 60 segundo
-
+    setInterval(maiorDificuldade, 60000); 
+    document.getElementById("restart-button").addEventListener("click", resetGame); // regra 9 ainda
+  
 }
 
 init();
