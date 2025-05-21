@@ -8,8 +8,7 @@ export class Tiro{
         this.element.style.position = "absolute"
         this.element.style.left = `${x}px`
         this.element.style.top = `${y}px`
-
-        this.speed = 5
+        this.speed = 6
         space.element.appendChild(this.element)
     }
 
