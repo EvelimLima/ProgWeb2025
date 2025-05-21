@@ -6,15 +6,20 @@ import { createRandomEnemyShip, moveEnemyShips,
         createRandomSmallAsteroid, moveSmallAsteroids,
         createRandomFlyingSaucer, moveFlyingSaucers
         } from "./enemyShip.js";
-import { maiorDificuldade } from "./enemyShip.js";
+import { maiorDificuldade,
+        resetDificuldade
+       } from "./enemyShip.js";
 import { Tiro } from "./tiro.js";
 import { enemyShips, bigAsteroids, smallAsteroids, flyingSaucers } from "./enemyShip.js";
 
 const tiros = []
+let isGameOver = false
 
 // Estado do jogo
 let score = 0;
 let lives = 3;
+let colisões = 0;
+
 let isRunning = false;
 let isPaused = false;
 const scoreDisplay = document.getElementById("score");
@@ -75,6 +80,7 @@ function isColliding(rect1, rect2) {
 }
 
 function detectarColisaoNave() {
+    if (danos) return
     const shipReact = ship.element.getBoundingClientRect()
 
     const checkGroup = (group) => {
@@ -100,18 +106,22 @@ let danos = false
 function danosNave(){
     if (danos) return
 
-    lives--
+    colisões++
+    if (colisões < 4) {
+        lives--
+        //console.log("vidas restantes; ", lives)
+        updateLives()
+        danos = true
+        ship.element.src = "assets/png/playerDamaged.png"
 
-    updateLives()
-    danos = true
-    ship.element.src = "assets/png/playerDamaged.png"
+        setTimeout(() => {
+            ship.element.src = ship.getCurrentSprite()
+            danos = false 
+        }, 5000 )
+    }
 
-    setTimeout(() => {
-        ship.element.src = ship.getCurentSprit()
-        danos = false
-    }, 5000 )
-
-    if (lives <= 0) {
+    if (colisões >= 4) {
+        ship.element.src = "assets/png/playerDamaged.png"
         endGame()     
     }
 }
@@ -119,7 +129,7 @@ function danosNave(){
 function updateLives(){
     const livesElement =  document.getElementById("lives")
 
-    livesElement.innerHTML = ' '
+    livesElement.innerHTML = ''
     for (let i = 0; i < lives; i++) {
         const lifeIcon = document.createElement('div')
         lifeIcon.className = 'life-icon'
@@ -129,6 +139,7 @@ function updateLives(){
 
 function endGame() { // regra 9
     isRunning = false;
+    isGameOver = true;
     document.getElementById("game-over").classList.remove("hidden");
     document.getElementById("final-score").textContent = `Score: ${score}`;
 }
@@ -136,8 +147,11 @@ function endGame() { // regra 9
 function resetGame() {
         score = 0;
         lives = 3;
+        colisões = 0;
         updateScore(0);
         updateLives();
+
+        resetDificuldade()
 
         const elementsToRemove = [
             ...enemyShips,
@@ -155,12 +169,13 @@ function resetGame() {
         tiros.forEach(tiro => tiro.destroi());
         tiros.length = 0;
 
-        ship.element.src = ship.getCurentSprit()
+        ship.element.src = ship.getCurrentSprite()
         ship.resetReposition()
 
         document.getElementById("game-over").classList.add("hidden");
         
         isRunning = true;
+        isGameOver = false;
 }
 
 
@@ -189,7 +204,7 @@ window.addEventListener("keydown", (e) => {
 
 // Loop principal do jogo
 function run() {
-    if (!isRunning || isPaused) return;
+    if (!isRunning || isPaused || isGameOver) return;
     
     space.move();
     ship.move();
@@ -225,7 +240,8 @@ function init() {
     setInterval(run, 1000 / FPS);
     setInterval(maiorDificuldade, 60000); 
     document.getElementById("restart-button").addEventListener("click", resetGame); // regra 9 ainda
-  
+
+
 }
 
 init();

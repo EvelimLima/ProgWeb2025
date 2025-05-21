@@ -1,4 +1,3 @@
-//space.js
 
 import { TAMX, TAMY } from "./config.js"
 
@@ -10,10 +9,9 @@ class Space {
     this.element.style.backgroundPositionY = "0px"
   }
   move() {
-    this.element.style.backgroundPositionY = `${parseInt(this.element.style.backgroundPositionY) + 1}px`
+    this.element.style.backgroundPositionY = `${parseInt(this.element.style.backgroundPositionY) + 2}px`
   }
 }
 
 export const space = new Space()
 
-//---------------------------------------------------------------------------------------------------------

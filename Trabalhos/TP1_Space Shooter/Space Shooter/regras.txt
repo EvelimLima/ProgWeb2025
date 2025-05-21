@@ -26,14 +26,5 @@ Regras Feitas:
 7 - Tiro com barra de espaço. Cada obstáculo dá uma pontuação diferente 
 8 - ao colidir com obstáculo perde 1 vida, mostras danos por 5 segundos
 9 - Ao perder 3 vidas: Game over com botão de restart
-
-
-Parcialmente Feitas:
-3 - Impedir que a nave ultrapasse os limites da tela. ----------- acho que tá ok
-
-
-Fazendo:
-
+3 - Impedir que a nave ultrapasse os limites da tela. --------
 10 - Remover os obstáculos destruídos ou que saírem da tela
-
-A fazer:

@@ -8,19 +8,22 @@
   </head>
   <body>
 
-    <div id="space">
-         <div id="hud">
-            <div id="lives"></div>
-            <div id="score">000000</div>
-        </div>
-    </div>
- 
-    <div>
-        <div id="game-over" class="hidden"> 
-            <h1>Game Over!</h1>
-            <p>Your score: <span id="final-score">000000</span></p>
-            <button id="restart-button">Restart</button>
-        </div>
+    <div class="game-container">
+      <div id="space">
+          <div id="hud">
+              <div id="lives"></div>
+              <div id="score">000000</div>
+          </div>
+      </div>
+  
+      <div>
+          <div id="game-over" class="hidden"> 
+              <h1>Game Over!</h1>
+              <p>Your score: <span id="final-score">000000</span></p>
+              <button id="restart-button">Restart</button>
+          </div>
+      </div>
+
     </div>
 
     <script type="module" src="js/game.js"></script>

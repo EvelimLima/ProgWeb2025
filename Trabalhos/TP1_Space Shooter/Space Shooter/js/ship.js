@@ -11,6 +11,7 @@ const directions = [
 
 class Ship {
   constructor() {
+    this.speed = 3,
     this.element = document.createElement("img")
     this.element.id = "ship"
     this.direction = 1
@@ -31,14 +32,14 @@ class Ship {
   const shipWidth = this.element.offsetWidth; // Largura da nave
 
   if (this.direction === 0 && currentLeft > 0) {
-    this.element.style.left = `${currentLeft - 1}px`;
+    this.element.style.left = `${currentLeft - this.speed}px`;
   }
   if (this.direction === 2 && currentLeft < TAMX - shipWidth) { // corrigir 
-    this.element.style.left = `${currentLeft + 1}px`;
+    this.element.style.left = `${currentLeft + this.speed}px`;
   }
  }
 
-  getCurentSprit() {
+  getCurrentSprite() {
   const directions = [
       "assets/png/playerLeft.png",
       "assets/png/player.png",
@@ -49,7 +50,7 @@ class Ship {
 
   resetReposition() {
     this.direction = 1
-    this.element.src = this.getCurentSprit()
+    this.element.src = this.getCurrentSprite()
     const shipWidth = this.element.offsetWidth
     this.element.style.left = `${(TAMX / 2) - 50}px`
     this.element.style.bottom = "20px"
@@ -58,4 +59,3 @@ class Ship {
 
 export const ship = new Ship()
 
-//---------------------------------------------------------------------------------------------------------
