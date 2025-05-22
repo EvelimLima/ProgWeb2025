@@ -11,6 +11,7 @@ const directions = [
 
 class Ship {
   constructor() {
+    this.danos = false
     this.speed = 3,
     this.element = document.createElement("img")
     this.element.id = "ship"
@@ -24,7 +25,10 @@ class Ship {
   changeDirection(giro) { // -1 +1
     if (this.direction + giro >= 0 && this.direction + giro <= 2)
       this.direction = this.direction + giro
-    this.element.src = directions[this.direction]
+
+    if (!this.danos){
+      this.element.src = directions[this.direction]
+    }
   }
 
   move() {

@@ -182,7 +182,7 @@ export const moveFlyingSaucers = () => { // mover os discos voadores
 
 export const resetDificuldade = () => {
   speedMultiplicador = 1.0
-  console.log(`Dificuldade resetada: ${speedMultiplicador.toFixed(2)}`)
+  //console.log(`Dificuldade resetada: ${speedMultiplicador.toFixed(2)}`)
 }
 
 

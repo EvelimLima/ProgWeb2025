@@ -19,7 +19,6 @@ let isGameOver = false
 let score = 0;
 let lives = 3;
 let colisões = 0;
-
 let isRunning = false;
 let isPaused = false;
 const scoreDisplay = document.getElementById("score");
@@ -43,6 +42,7 @@ function updateScore(points) { // regra 1 ok.
     score += points;
     scoreDisplay.textContent = String(score).padStart(6, "0"); 
 }
+
 
 function checkColisoes() { // regra 7
     tiros.forEach((tiro, i) => {
@@ -70,6 +70,7 @@ function checkColisoes() { // regra 7
     })
 }
 
+
 function isColliding(rect1, rect2) { 
     return !(
         rect1.top > rect2.bottom ||
@@ -78,6 +79,7 @@ function isColliding(rect1, rect2) {
         rect1.right < rect2.left
     );
 }
+
 
 function detectarColisaoNave() {
     if (danos) return
@@ -101,6 +103,7 @@ function detectarColisaoNave() {
     checkGroup(flyingSaucers)
 }
 
+
 let danos = false
 
 function danosNave(){
@@ -112,9 +115,11 @@ function danosNave(){
         //console.log("vidas restantes; ", lives)
         updateLives()
         danos = true
+        ship.danos = true
         ship.element.src = "assets/png/playerDamaged.png"
 
         setTimeout(() => {
+            ship.danos = false
             ship.element.src = ship.getCurrentSprite()
             danos = false 
         }, 5000 )
@@ -125,6 +130,7 @@ function danosNave(){
         endGame()     
     }
 }
+
 
 function updateLives(){
     const livesElement =  document.getElementById("lives")
@@ -137,12 +143,14 @@ function updateLives(){
     }
 }
 
+
 function endGame() { // regra 9
     isRunning = false;
     isGameOver = true;
     document.getElementById("game-over").classList.remove("hidden");
     document.getElementById("final-score").textContent = `Score: ${score}`;
 }
+
 
 function resetGame() {
         score = 0;
@@ -196,11 +204,12 @@ window.addEventListener("keydown", (e) => {
         }
     }
 
-    if (e.key === "p") { // regra 2 ok
+    if (e.key === "p" || e.key === "P") { // regra 2 ok
             isPaused = !isPaused;
         }
 
 });
+
 
 // Loop principal do jogo
 function run() {
