@@ -1,18 +1,32 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TS 1 - calculadora para área, circunferência de um círculo</title>
-    <link rel="stylesheet" href="círculo.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="círculo.css">
+  <title>Cálculo de Círculo</title>
 </head>
 <body>
-    
-    <div id="container">
-        <p>Informe o raio <input type="number" name="" id="raio"> <button onclick="calcular">OK</button> </p>
-        <p>Área do círculo <input type="number" id="area"></p>
-        <P>Círcunferência <input type="number" id="circunferência"></P>
-    </div>   
-   
-    <script src="círculo.ts"></script>
+
+<script src="círculo.js"></script>
+
+  <div class="container">
+    <h2>Informe o raio</h2>
+    <form name="myForm" onsubmit="calcular(event)">
+      <input name="myInput" type="text" placeholder="Digite o raio" />
+      <button type="submit">OK</button>
+    </form>
+
+    <table>
+      <tr>
+        <td>Área do círculo:</td>
+        <td><input type="text" id="area" readonly></td>
+      </tr>
+      <tr>
+        <td>Circunferência:</td>
+        <td><input type="text" id="circunferencia" readonly></td>
+      </tr>
+    </table>
+  </div>
+
 </body>
 </html>
