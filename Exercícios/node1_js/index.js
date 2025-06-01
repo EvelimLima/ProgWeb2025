@@ -1,11 +1,14 @@
-// parte I
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-//parte II
-require('dotenv').config(); //carrega as variáveis de ambiente do arquivo .env
-const{createLink} = require('./util'); //importa a função createLink do arquivo util.js Parte 6
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { config} from 'dotenv';
+import { fileURLToPath } from 'url';
+import {createLink} from './util.js';
 
+config(); //carrega as variáveis de ambiente do arquivo .env
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //pega o diretório passado como argumento na linha de comando
 const directoryPath = process.argv[2];
