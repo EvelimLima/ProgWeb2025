@@ -1,24 +1,21 @@
-import express, {Request, Response} from 'express';
-import validateEnv from './utils/validateEnv';  
-import { accessLogger } from './middlewares/logger';
-
+import express from 'express';
 import dotenv from 'dotenv';
-//import morgan from 'morgan';
+import validateEnv from './utils/validateEnv';
+import { accessLogger } from './middlewares/logger';
+import router from './router/router';
 
 dotenv.config();
-
 validateEnv();
-// Importando o express e o validateEnv
-const app = express();
 
-app.use(accessLogger); // Usando o middleware de logger
+
+const app = express();
+//app.use(accessLogger);
+
+app.use("/",router); 
+
 
 const PORT = process.env.PORT || 3333;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta http://localhost:${PORT}`);
+  console.log(`Servidor rodando na porta http://localhost:${PORT}`);
 });
