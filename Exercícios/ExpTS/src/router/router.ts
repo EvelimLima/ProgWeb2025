@@ -1,31 +1,29 @@
-import express, { Request, Response, Router } from 'express';
-import { LoremIpsum, loremIpsum } from 'lorem-ipsum';
+import { Console } from 'console';
+import { Router, Request, Response } from 'express';
 
 const router = Router();
 
-// Rota raiz
-/*
-router.get('/', (_req, res, ) => {
-  res.send('Rota Raiz');
-});
-*/
-
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 8,
-    min: 4,
-  },
-  wordsPerSentence: {
-    max: 16,
-    min: 4,
-  },
+router.get('/hb1', (_req: Request, res: Response) => {
+  console.log('Rota /hb1 acessada');
+  res.render('hb1', { layout: false });
 });
 
-router.get('/lorem/:qtd', (req: Request, res: Response) => {
-  const qtd = parseInt(req.params.qtd, 10);
-  
-  const text = lorem.generateParagraphs(qtd);
-  res.send('<pre>{text}</pre>');
+router.get('/hb2', (_req: Request, res: Response) => {
+  console.log('Rota /hb2 acessada');
+  res.render('hb2',  { layout: false });
+});
+
+router.get('/hb3', (_req: Request, res: Response) => {
+  console.log('Rota /hb3 acessada');
+  res.render('hb3', {
+    layout: false,
+    professores: [
+      { nome: 'David Fernandes', sala: '1238' },
+      { nome: 'Horácio Fernandes', sala: '1237' },
+      { nome: 'Edenlo Moura', sala: '1236' },
+      { nome: 'Elaine Harada', sala: '1234' },
+    ]
+  });
 });
 
 export default router;
