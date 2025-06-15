@@ -1,10 +1,13 @@
+//index.ts
+
 import express from 'express';
 import dotenv from 'dotenv';
 import validateEnv from './utils/validateEnv';
 import { accessLogger } from './middlewares/logger';
 import router from './router/router';
-
 import { engine } from 'express-handlebars';
+import { filterByNode } from './views/helpers/helpers'; //ex: 2-parte 6
+
 import path from 'path';
 
 dotenv.config();
@@ -18,8 +21,15 @@ app.use((req, _res, next) => {
   next();
 });
 
+app.engine("handlebars", engine({
+helpers: require(`${__dirname}/views/helpers/helpers.ts`)
+}));
 
-app.engine('handlebars', engine());
+app.engine('handlebars', engine({ 
+  helpers: { filterByNode }
+}));
+
+
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
