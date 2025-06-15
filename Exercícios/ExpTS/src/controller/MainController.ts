@@ -1,12 +1,16 @@
+//mainController.ts
 import { Request, Response } from 'express';
 
 export const mainController = {
   hb1: (req: Request, res: Response) => {
-    res.render('hb1', { title:'Página HB1' });
+    res.render('hb1', { layout: 'main'});
   },
+
+  
   hb2: (req: Request, res: Response) => {
-    res.render('hb2', { title:'Página HB2' });
+    res.render('hb2', { title:'Página HB2'});
   },
+  
   hb3: (req: Request, res: Response) => {
     res.render('hb3', { title:'Página HB3', professores: [
       { nome:'David Fernandes', sala:'1238' },

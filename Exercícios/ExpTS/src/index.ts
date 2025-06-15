@@ -31,6 +31,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.use(router);
 
