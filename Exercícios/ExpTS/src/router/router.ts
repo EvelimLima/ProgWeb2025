@@ -1,12 +1,12 @@
 // src/router/router.ts
 import { Router } from 'express';
-import { MainController } from '../controller/MainController';
+import { mainController } from '../controller/MainController';
 
 const router = Router();
 
-router.get('/hb1', MainController.hb1);
-router.get('/hb2', MainController.hb2);
-router.get('/hb3', MainController.hb3);
-router.get('/hb4', MainController.hb4);
+router.get('/hb1', mainController.hb1);
+router.get('/hb2', mainController.hb2);
+router.get('/hb3', mainController.hb3);
+router.get('/hb4', mainController.hb4);
 
 export default router;

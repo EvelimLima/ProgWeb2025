@@ -1,5 +1,4 @@
 //index.ts
-
 import express from 'express';
 import dotenv from 'dotenv';
 import validateEnv from './utils/validateEnv';
@@ -21,17 +20,17 @@ app.use((req, _res, next) => {
   next();
 });
 
-app.engine("handlebars", engine({
-helpers: require(`${__dirname}/views/helpers/helpers.ts`)
-}));
-
 app.engine('handlebars', engine({ 
-  helpers: { filterByNode }
+  defaultLayout: 'main',
+  layoutsDir: path.resolve(__dirname, 'views', 'layouts'),
 }));
 
 
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
+
+
+
 
 app.use(router);
 
