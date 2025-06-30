@@ -1,22 +1,48 @@
 //mainController.ts
 import { Request, Response } from 'express';
 
+
 export const mainController = {
+  index: (req: Request, res: Response) => {
+      res.render('main/index');
+  },
+
+  lorem: (req: Request, res: Response) => {
+      res.render('main/lorem');
+  },
+
+  bemvindo: (req: Request, res: Response) => {
+      const nome = req.params.nome;
+      res.render('main/bemvindo', { nome });
+  },
+
+  about: (_req: Request, res: Response) => {
+    res.render('main/about', { title: 'Sobre o Jogo Space Shooter' });
+  },
+
+
   hb1: (req: Request, res: Response) => {
-    res.render('hb1', { layout: 'main'});
+  res.render('main/hb1', { faculdade: 'Universidade Federal do Amazonas' });
+  },
+
+
+  hb2: (req: Request, res: Response) => {
+    res.render('main/hb2', { isNode: true });
   },
 
   
-  hb2: (req: Request, res: Response) => {
-    res.render('hb2', { title:'Página HB2'});
-  },
-  
   hb3: (req: Request, res: Response) => {
-    res.render('hb3', { title:'Página HB3', professores: [
-      { nome:'David Fernandes', sala:'1238' },
-      { nome:'Horácio Fernandes', sala:'1237' }
-    ]});
+    res.render('main/hb3', {
+      professores: [
+        { nome: 'David Fernandes', sala: '1238' },
+        { nome: 'Horácio Fernandes', sala: '1233' },
+        { nome: 'Eldeno Moura', sala: '1236' },
+        { nome: 'Elaine Harada', sala: '1231' }
+      ]
+    });
   },
+
+
   hb4: (req: Request, res: Response) => {
     const technologies = [
       { name:'Express', type:'Framework', poweredByNodejs: true },
@@ -28,7 +54,7 @@ export const mainController = {
       { name:'Sequelize', type:'ORM tool', poweredByNodejs: true }
     ];
 
-    res.render('hb4', { title:'Tecnologias baseadas no NodeJS', technologies });
+    res.render('main/hb4', { title:'Tecnologias baseadas no NodeJS', technologies });
   }
 };
 

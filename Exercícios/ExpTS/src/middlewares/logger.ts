@@ -1,37 +1,33 @@
-import { Request, Response, NextFunction } from 'express';
 import fs from 'fs';
 import path from 'path';
+import { Request, Response, NextFunction } from 'express';
+import dotenv from 'dotenv';
 
-const logFolder = process.env.LOG_FOLDER || 'logs';
-const logFormat = process.env.LOG_FORMAT || 'completo';
+dotenv.config();
 
-if (!fs.existsSync(logFolder)) {
-    fs.mkdirSync(logFolder, { recursive: true });
+const logsPath = process.env.LOGS_PATH || 'logs'; 
+const logFormat = process.env.LOG_FORMAT || 'simples';
+
+// Cria o diretório de logs se não existir
+if (!fs.existsSync(logsPath)) {
+    fs.mkdirSync(logsPath, { recursive: true });
 }
 
-export function accessLogger(req: Request, res: Response, next: NextFunction) {
-    const timestamp = new Date().toISOString();
-    const method = req.method;
-    const url = req.url;
-
-    let logMessage = `[${timestamp}] ${method} ${url}`;
+export const accessLogger = (req: Request, res: Response, next: NextFunction) => {
+    const now = new Date().toISOString();
+    let log = `[${now}] ${req.method} ${req.url}`;
 
     if (logFormat === 'completo') {
-        const httpVersion = req.httpVersion;
-        const userAgent = req.get('User-Agent') || 'Unknown';
-        logMessage += ` HTTP/${httpVersion} UA: ${userAgent}`;
+        log += ` ${req.protocol.toUpperCase()} ${req.headers['user-agent']}`;
     }
 
-    logMessage += '\n';
+    log += '\n';
 
-    const date = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
-    const logFilePath = path.join(logFolder, 'access-${date}.log');
+    const logFilePath = path.join(logsPath, 'access.log');
 
-    fs.appendFile(logFilePath, logMessage, (err) => {
-        if (err) {
-            console.error('Erro ao escrever no arquivo de log:', err);
-        }
+    fs.appendFile(logFilePath, log, (err) => {
+        if (err) console.error('Erro ao gravar log:', err);
     });
 
     next();
-}
+};

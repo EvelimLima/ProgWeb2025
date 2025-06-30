@@ -1,0 +1,16 @@
+
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded">
+    <h1 class="mb-0">Detalhes do Usuário</h1>
+    <a href="/user" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Nome:</strong> {{user.fullname}}</li>
+    <li class="list-group-item"><strong>Email:</strong> {{user.email}}</li>
+    <li class="list-group-item"><strong>Curso:</strong> {{user.major.name}}</li>
+  </ul>
+</div>
+

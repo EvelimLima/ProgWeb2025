@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded">
+    <h1 class="mb-0">Editar Curso</h1>
+    <a href="/major" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <form action="/major/update/{{major.id}}" method="POST" class="border rounded p-4 bg-white shadow-sm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome do Curso</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="name" 
+        name="name" 
+        required 
+        placeholder="Ex: Ciência da Computação"
+        value="{{major.name}}"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="code" class="form-label">Código/Sigla</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="code" 
+        name="code" 
+        required 
+        placeholder="Ex: CC01"
+        value="{{major.code}}"
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrição (Opcional)</label>
+      <textarea 
+        class="form-control" 
+        id="description" 
+        name="description" 
+        rows="3"
+      >{{major.description}}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <a href="/major" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
