@@ -44,16 +44,23 @@ const read = async (req: Request, res: Response) => {
 
 const update = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const majors = await prisma.major.findMany();
+    //
+    const majors = (await prisma.major.findMany()) as Array<
+        { name: string; id: string; createdAt: Date; updatedAt: Date; code: string; description: string | null; isSelected?: boolean }
+    >;
 
     if (req.method === 'GET') {
         const user = await userService.getUser(id);
 
-        /*
+        if (!user) {
+            return res.status(404).send('Usuário não encontrado');
+        }
+
+        // define qual curso está selecionado para o usuário
         majors.forEach((major) => {
             major.isSelected = major.id === user.majorId;
         });
-*/
+
         res.render('user/update', { user, majors });
     } else {
         const { fullname, email, majorId } = req.body;
@@ -66,7 +73,6 @@ const update = async (req: Request, res: Response) => {
         res.redirect('/user');
     }
 };
-
 
 
 
