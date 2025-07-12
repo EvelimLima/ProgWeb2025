@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Shooter</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+
+    <div class="game-container">
+      <div id="space">
+          <div id="hud">
+              <div id="lives"></div>
+              <div id="score">000000</div>
+          </div>
+      </div>
+  
+      <div>
+          <div id="game-over" class="hidden"> 
+              <h1>Game Over!</h1>
+              <p>Your score: <span id="final-score">000000</span></p>
+              <button id="restart-button">Restart</button>
+          </div>
+      </div>
+
+    </div>
+
+    <script type="module" src="./js/game.js" defer></script> 
+  </body>
+</html>

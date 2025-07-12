@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded shadow-sm">
+    <h1 class="mb-0">Ranking dos 10 Melhores Jogadores</h1>
+    <a href="/about" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left"></i> Voltar
+    </a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Posição</th>
+          <th scope="col">Usuário</th>
+          <th scope="col">Email</th>
+          <th scope="col">Pontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ranking}}
+        <tr>
+          <td>{{posicao}}</td>
+          <td>{{name}}</td>
+          <td>{{email}}</td>
+          <td>{{score}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

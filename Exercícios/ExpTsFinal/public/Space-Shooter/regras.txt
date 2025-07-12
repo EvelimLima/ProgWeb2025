@@ -1,0 +1,30 @@
+TPL_Space Shooter\space-shooter/
+├── assets/
+│   ├── png/                  # Imagens do jogo (inimigos, nave, fundo, etc.)
+│   ├── previewjpg/           # prévias das imagens
+│   ├── readmetxt/            # Arquivo de texto com informações
+│   ├── spaceArt.ai/.svg/.swf/.zip  # Arquivos de arte em diferentes formatos
+│   ├── css/
+│   │   └── styles.css        # Estilos do jogo
+│   └── js/
+│       ├── config.js         # Configurações do jogo
+│       ├── enemyShip.js      # Lógica dos inimigos
+│       ├── game.js           # Lógica principal do jogo
+│       ├── ship.js           # Lógica da nave do jogador
+|       ├── space.js          # cenário do jogo
+│       └── tiro.js           # tiros da nave jogador
+└── index.html              # Página principal do jogo
+
+
+Regras Feitas:
+1 - Espaçonave parada. Pontuação zerada e 3 vidas visíveis no topo direito
+2 - Tecla espaço inicia o jogo. Tecla P pausa/despausa.
+
+4 - Adicionar disco voador, asteroide grande, asteroide pequeno
+5 - velocidades dos obstáculos devem ser aleatórias
+6 - Aumentar a velocidade dos obstáculos a cada minuto.
+7 - Tiro com barra de espaço. Cada obstáculo dá uma pontuação diferente 
+8 - ao colidir com obstáculo perde 1 vida, mostras danos por 5 segundos
+9 - Ao perder 3 vidas: Game over com botão de restart
+3 - Impedir que a nave ultrapasse os limites da tela. --------
+10 - Remover os obstáculos destruídos ou que saírem da tela
